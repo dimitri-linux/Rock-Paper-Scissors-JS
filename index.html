@@ -7,7 +7,86 @@
 </head>
 <body>
     <script>
-        
+
+        function computerPlay() {
+            // Random Picker
+
+            let turn = Math.floor((Math.random() * 3 ) + 1);
+
+            // Assignment of random picker
+
+            if (turn === 1) {
+                turn = 'Rock';
+            } else if (turn === 2) {
+                turn = 'Paper'
+            } else {
+                turn = 'Scissors';
+            }
+
+            return turn;
+        }
+
+        function playerSelection() {
+
+            let choice = prompt("'Rock', 'Paper' || 'Scissors'");
+
+            if (choice.toLowerCase() === 'rock' || choice.toLowerCase() === 'paper' || choice.toLowerCase() === 'scissors') {
+                return choice;
+            } else {
+                console.log("You have entered an invalid choice!");
+            }
+
+            choice = choice.toLowerCase();
+
+            return choice
+        }
+
+        let playerChoice = playerSelection();
+
+        let computerChoice = computerPlay();
+
+
+        // playing a round
+
+        function playRound(player1 = computerChoice, player2 = playerChoice) {
+
+                let player1 = computerChoice;
+                let player2 = playerChoice;
+
+                let player1_Score = 0;
+                let player2_Score = 0;
+
+                if (player1.toLowerCase() === 'rock' && player2.toLowerCase() === 'scissors') {
+                    console.log(`You Lose! ${player1} beats ${player2}`);
+                    ++player1_Score;
+                } else if (player1.toLowerCase() === 'paper' && player2.toLowerCase() === 'rock') {
+                    console.log(`You Lose! ${player1} beats ${player2}`);
+                    ++player1_Score;
+             } else if (player1.toLowerCase() === 'scissors' && player2.toLowerCase() === 'paper') {
+                    console.log(`You Lose! ${player1} beats ${player2}`);
+                    ++player1_Score;
+              } else if (player1.toLowerCase() === player2.toLowerCase()) {
+                    console.log(`Draw! ${player1} && ${player2}`);
+              } else {
+                    console.log(`You Win! ${player2} beats ${player1}`);
+                    ++player2_Score;
+            }
+
+             console.log(`Computer Score: ${player1_Score}
+                         Your Score    : ${player2_Score}
+            `);
+
+
+        }
+
+
+        function game() {
+            playRound();
+        }
+
+
+        game();
+
     </script>
 </body>
 </html>
