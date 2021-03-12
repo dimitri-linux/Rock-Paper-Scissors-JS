@@ -38,23 +38,19 @@
 
             choice = choice.toLowerCase();
 
-            return choice
+            return choice;
         }
-
-        let playerChoice = playerSelection();
-
-        let computerChoice = computerPlay();
 
 
         // playing a round
 
-        function playRound(player1 = computerChoice, player2 = playerChoice) {
+        let player1_Score = 0;
+        let player2_Score = 0;
 
-                let player1 = computerChoice;
-                let player2 = playerChoice;
+        function playRound(player1, player2) {
 
-                let player1_Score = 0;
-                let player2_Score = 0;
+            player1 = computerPlay();
+            player2 = playerSelection();
 
                 if (player1.toLowerCase() === 'rock' && player2.toLowerCase() === 'scissors') {
                     console.log(`You Lose! ${player1} beats ${player2}`);
@@ -73,7 +69,7 @@
             }
 
              console.log(`Computer Score: ${player1_Score}
-                         Your Score    : ${player2_Score}
+Your Score    : ${player2_Score}
             `);
 
 
@@ -81,7 +77,9 @@
 
 
         function game() {
-            playRound();
+            while (player2_Score < 5 && player1_Score < 5) {
+                playRound()
+            }
         }
 
 
